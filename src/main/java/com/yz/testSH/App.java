@@ -9,7 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.yz.testSH.model.TStudent;
 import com.yz.testSH.service.student.IStudentService;
-import com.yz.testSH.service.student.impl.StudentServiceImpl;
 
 /**
  * Hello world!

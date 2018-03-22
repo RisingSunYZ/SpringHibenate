@@ -19,7 +19,7 @@ public class StudentServiceImpl implements IStudentService{
 	@Override
 	public void save(TStudent entity) {
 		System.out.println("searvice is ready..........");
-		studentDao.save(entity);
+		studentDao.saveBySession(entity);
 	}
 
 	

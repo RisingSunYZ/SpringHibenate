@@ -44,6 +44,12 @@
         </property>  
     </bean>  
     
+    <!--spring JDBC -->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<!-- mysql -->
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+    
     
     <!-- 设定transactionManager -->    
     <bean id="txManager"    
