@@ -55,6 +55,7 @@ public final class inc_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<link rel=\"stylesheet\" type=\"text/css\" href=\"scripts/jqueryUI/jquery-easyui-1.3.4/themes/icon.css\" />\r\n");
       out.write("<script type=\"text/javascript\" src=\"scripts/jqueryUI/jquery-easyui-1.3.4/jquery.easyui.min.js\"></script>\r\n");
       out.write("<script type=\"text/javascript\" src=\"scripts/jqueryUI/jquery-easyui-1.3.4/locale/easyui-lang-zh_CN.js\"></script>\r\n");
+      out.write("<script type=\"text/javascript\" src=\"scripts/jqueryUI/lhgdialog/lhgdialog/lhgdialog.js\"></script>\r\n");
 
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
