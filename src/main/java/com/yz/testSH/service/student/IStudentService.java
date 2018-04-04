@@ -5,4 +5,5 @@ import com.yz.testSH.service.IService;
 
 public interface IStudentService extends IService<TStudent>{
 
+
 }

@@ -40,7 +40,6 @@ public class TStudent {
 
 	private int id;
 	private String name;
-	
 	private Date birth;
 
 	

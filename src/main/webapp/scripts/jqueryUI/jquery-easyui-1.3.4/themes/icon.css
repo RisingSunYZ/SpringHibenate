@@ -1,0 +1,206 @@
+.mxicon-GongYingShangGuanLi{
+	background:url('icons/GongYingShangGuanLi.png') no-repeat ;
+}
+
+.mxicon-JiChuXinXi{
+	background:url('icons/JiChuXinXi.png') no-repeat ;
+}
+.mxicon-HeTongBianJi{
+	background:url('icons/HeTongBianJi.gif') no-repeat ;
+}
+.mxicon-HeTongMoBan{
+	background:url('icons/HeTongMoBan.png') no-repeat ;
+}
+.mxicon-HeTongGuanLi{
+	background:url('icons/HeTongGuanLi.gif') no-repeat ;
+}
+.mxicon-JieBiaoChaXun{
+	background:url('icons/JieBiaoChaXun.gif') no-repeat ;
+}
+.mxicon-KaiBiao{
+	background:url('icons/KaiBiao.gif') no-repeat ;
+}
+.mxicon-KaiBiaoXianChang{
+	background:url('icons/KaiBiaoXianChang.gif') no-repeat ;
+}
+.mxicon-PingBiao{
+	background:url('icons/PingBiao.gif') no-repeat ;
+}
+.mxicon-ShengChengHeTong{
+	background:url('icons/ShengChengHeTong.gif') no-repeat ;
+}
+.mxicon-ShouBiaoHuiYing{
+	background:url('icons/ShouBiaoHuiYing.gif') no-repeat ;
+}
+.mxicon-TouBiao{
+	background:url('icons/TouBiao.gif') no-repeat ;
+}
+.mxicon-TouBiaoBaoJia{
+	background:url('icons/TouBiaoBaoJia.gif') no-repeat ;
+}
+.mxicon-TouBiaoGuanLi{
+	background:url('icons/TouBiaoGuanLi.gif') no-repeat ;
+}
+.mxicon-TouBiaoXiTong{
+	background:url('icons/TouBiaoXiTong.png') no-repeat ;
+}
+.mxicon-WoZiBianMa{
+	background:url('icons/WoZiBianMa.png') no-repeat ;
+}
+.mxicon-WoZiLeiBie{
+	background:url('icons/WuZiLeiBie.gif') no-repeat ;
+}
+.mxicon-XiangMuWeiHu{
+	background:url('icons/XiangMuWeiHu.gif') no-repeat ;
+}
+.mxicon-YiJieShuXiangMu{
+	background:url('icons/YiJieShuXiangMu.gif') no-repeat ;
+}
+.mxicon-ZaiXianTouBiao{
+	background:url('icons/ZaiXianTouBiao.png') no-repeat ;
+}
+.mxicon-ZhaoBiaoGongGaoYuYaoQing{
+	background:url('icons/ZhaoBiaoGongGaoYuYaoQing.gif') no-repeat ;
+}
+.mxicon-ZhaoBiaoGuanLi{
+	background:url('icons/ZhaoBiaoGuanLi.gif') no-repeat ;
+}
+.mxicon-ZhongBiaoChaXun{
+	background:url('icons/ZhongBiaoChaXun.gif') no-repeat ;
+}
+
+.mxicon-blank{
+	background:url('icons/blank.gif') no-repeat ;
+}
+.mxicon-add{
+	background:url('icons/edit_add.png') no-repeat  ;
+}
+.mxicon-edit{
+	background:url('icons/pencil.png') no-repeat  ;
+}
+.mxicon-remove{
+	background:url('icons/edit_remove.png') no-repeat  ;
+}
+.mxicon-save{
+	background:url('icons/filesave.png') no-repeat  ;
+}
+.mxicon-cut{
+	background:url('icons/cut.png') no-repeat  ;
+}
+.mxicon-ok{
+	background:url('icons/ok.png') no-repeat  ;
+}
+.mxicon-no{
+	background:url('icons/no.png') no-repeat ;
+}
+.mxicon-cancel{
+	background:url('icons/cancel.png') no-repeat ;
+}
+.mxicon-reload{
+	background:url('icons/reload.png') no-repeat ;
+}
+.mxicon-search{
+	background:url('icons/search.png') no-repeat ;
+}
+.mxicon-print{
+	background:url('icons/print.png') no-repeat ;
+}
+.mxicon-help{
+	background:url('icons/help.png') no-repeat ;
+}
+.mxicon-undo{
+	background:url('icons/undo.png') no-repeat ;
+}
+.mxicon-redo{
+	background:url('icons/redo.png') no-repeat ;
+}
+.mxicon-back{
+	background:url('icons/back.png') no-repeat  ;
+}
+.mxicon-sum{
+	background:url('icons/sum.png') no-repeat ;
+}
+.mxicon-tip{
+	background:url('icons/tip.png') no-repeat  ;
+}
+
+.mxicon-mini-add{
+	background:url('icons/mini_add.png') no-repeat  ;
+}
+.mxicon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat  ;
+}
+.mxicon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat  ;
+}
+
+
+
+
+
+
+
+.icon-blank{
+	background:url('icons/blank.gif') no-repeat ;
+}
+.icon-add{
+	background:url('icons/edit_add.png') no-repeat center center;
+}
+.icon-edit{
+	background:url('icons/pencil.png') no-repeat center center;
+}
+.icon-remove{
+	background:url('icons/edit_remove.png') no-repeat center center;
+}
+.icon-save{
+	background:url('icons/filesave.png') no-repeat center center;
+}
+.icon-cut{
+	background:url('icons/cut.png') no-repeat center center;
+}
+.icon-ok{
+	background:url('icons/ok.png') no-repeat center center;
+}
+.icon-no{
+	background:url('icons/no.png') no-repeat center center;
+}
+.icon-cancel{
+	background:url('icons/cancel.png') no-repeat center center;
+}
+.icon-reload{
+	background:url('icons/reload.png') no-repeat center center;
+}
+.icon-search{
+	background:url('icons/search.png') no-repeat center center;
+}
+.icon-print{
+	background:url('icons/print.png') no-repeat center center;
+}
+.icon-help{
+	background:url('icons/help.png') no-repeat center center;
+}
+.icon-undo{
+	background:url('icons/undo.png') no-repeat center center;
+}
+.icon-redo{
+	background:url('icons/redo.png') no-repeat center center;
+}
+.icon-back{
+	background:url('icons/back.png') no-repeat center center;
+}
+.icon-sum{
+	background:url('icons/sum.png') no-repeat center center;
+}
+.icon-tip{
+	background:url('icons/tip.png') no-repeat center center;
+}
+
+.icon-mini-add{
+	background:url('icons/mini_add.png') no-repeat center center;
+}
+.icon-mini-edit{
+	background:url('icons/mini_edit.png') no-repeat center center;
+}
+.icon-mini-refresh{
+	background:url('icons/mini_refresh.png') no-repeat center center;
+}

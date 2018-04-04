@@ -1,5 +1,8 @@
 package com.yz.testSH.dao.impl;
 
+import java.util.List;
+import java.util.Map;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,20 @@ public class BaseDaoImpl<T> implements IBaseDao<T>{
 
 	@Override
 	public void saveByJdbcTemplate(T entity) {
+	}
+
+	@Override
+	public List<Map<String, Object>> searchForMap(String sql) {
+		return this.jdbcTemplate.queryForList(sql);
+	}
+
+	@Override
+	public long count(String sql) {
+		Map<String,Object> map = this.jdbcTemplate.queryForMap(sql);
+		if(null!=map&&map.size()>0){
+			return (long)map.get("counts");
+		}
+		return 0;
 	}
 
 	
