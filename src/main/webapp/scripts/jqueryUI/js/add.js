@@ -1,14 +1,21 @@
+var api = frameElement.api, W = api.opener;
+var addForm;
 $(function(){
-	$('#ff').form({    
-	    url:basePath +'student',    
-	    onSubmit: function(){    
-	        // do some check    
-	        // return false to prevent submit;    
-	    },    
+		addForm = $('#addForm').form({    
+	    url:basePath +'student/add.do',    
 	    success:function(data){    
-	        alert(data)    
+	    	if(data.success){
+	    		W.refreshGrid();
+	    	}
 	    }    
-	});    
-//	// submit the form    
-//	$('#ff').submit(); 
+	}); 
 });
+
+
+function save(){
+//	addForm.submit(); 
+	return {
+		name :$("input[name=name]").val(),
+		birth :$("input[name=birth]").val()
+	};
+}

@@ -8,7 +8,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     <title>My JSP 'MyJsp.jsp' starting page</title>
     <jsp:include page="/WEB-INF/jsp/inc.jsp"></jsp:include>
-    <script type="text/javascript" src="scripts/jqueryUI/js/index.js"></script>
+    <script type="text/javascript" src="scripts/jqueryUI/js/index.js?<%=Math.random()%>"></script>
   </head>
   
   <body class="easyui-layout">

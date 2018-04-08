@@ -34,7 +34,7 @@ $(function(){
 			handler: function(){
 				var dilog = $.dialog({
 					id : 'dialog',
-					title : '添加學生',
+					title : '添加学生',
 					content : 'url:'+basePath+'student/fdAdd.do',
 					height : "500px",
 					width : "1070px",
@@ -46,7 +46,14 @@ $(function(){
 					min : false,
 					cache : false,
 					ok : function() {
-						
+						var temp = dilog.content.save();
+						$.post(basePath +'student/add.do',{"name":temp.name,"birth":temp.birth},function(data){
+//							data = eval("("+data+")");
+							if(data.success){
+								$.dialog.alert(data.msg);
+					    		refreshGrid();
+					    	}
+						})
 					},
 					cancelVal : '关闭',
 					cancel : true
@@ -68,10 +75,15 @@ $(function(){
 		rownumbers:true ,
 		pagination :true ,
 		fit : true ,
-		pageList : [1,2,5],
+//		pageList : [2,5],
 		columns:[column],
 		toolbar: toolbar
 
 	});
 });
+
+
+function refreshGrid(){
+	grid.datagrid("reload");
+}
 

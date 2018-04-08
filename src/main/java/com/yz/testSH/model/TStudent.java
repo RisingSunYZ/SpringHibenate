@@ -1,5 +1,6 @@
 package com.yz.testSH.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,8 +10,14 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="t_student")
-public class TStudent {
+public class TStudent implements Serializable{
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8102209051388204094L;
+	
 	
 	@Id
 	@GeneratedValue
