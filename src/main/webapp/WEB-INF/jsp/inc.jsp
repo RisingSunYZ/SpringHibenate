@@ -3,6 +3,7 @@
 <link rel="stylesheet" type="text/css" href="scripts/jqueryUI/jquery-easyui-1.3.4/themes/icon.css" />
 <script type="text/javascript" src="scripts/jqueryUI/jquery-easyui-1.3.4/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="scripts/jqueryUI/jquery-easyui-1.3.4/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="scripts/jqueryUI/lhgdialog/lhgdialog/lhgdialog.js"></script>
 <%
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()

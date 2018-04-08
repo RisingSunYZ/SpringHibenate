@@ -65,7 +65,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       out.write("    ");
       org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "/WEB-INF/jsp/inc.jsp", out, false);
       out.write("\r\n");
-      out.write("    <script type=\"text/javascript\" src=\"scripts/jqueryUI/js/index.js\"></script>\r\n");
+      out.write("    <script type=\"text/javascript\" src=\"scripts/jqueryUI/js/index.js?");
+      out.print(Math.random());
+      out.write("\"></script>\r\n");
       out.write("  </head>\r\n");
       out.write("  \r\n");
       out.write("  <body class=\"easyui-layout\">\r\n");

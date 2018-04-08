@@ -16,8 +16,29 @@
     <context:component-scan base-package="com.yz.testSH.control" />
 
     <!-- 注册HandlerMapper、HandlerAdapter两个映射类 -->
-    <mvc:annotation-driven />
+    <mvc:annotation-driven conversion-service="conversionService">
+    	<mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
+
+    <!-- 设置Converter转换器 -->
+     <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+         <!-- 设置多个转换器 -->
+         <property name="converters">
+             <list>
+                 <bean class="com.yz.testSH.converter.DateConverter"></bean>
+             </list>
+         </property>
+     </bean>
+        
     <!-- 访问静态资源 -->
     <mvc:default-servlet-handler />
     
