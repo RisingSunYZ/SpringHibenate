@@ -2,9 +2,11 @@ package com.yz.testSH.control;
 
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -56,6 +58,17 @@ public class StudentControl {
 	@RequestMapping("add.do")
 	public String add(TStudent student){
 		AjaxMsg msg =  this.studentService.save(student);
+		String res = JSON.toJSONString(msg);
+		return res;
+	}
+	
+	@ResponseBody
+	@RequestMapping("del/{ids}.do")
+	public String del(@PathVariable("ids")String ids) throws Exception{
+		if(StringUtils.isBlank(ids)){
+			throw new Exception("获取学生信息失败");
+		}
+		AjaxMsg msg =  this.studentService.del(ids);
 		String res = JSON.toJSONString(msg);
 		return res;
 	}

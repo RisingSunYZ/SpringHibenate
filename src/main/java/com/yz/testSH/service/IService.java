@@ -11,4 +11,6 @@ public interface IService<T> {
 	AjaxMsg save(T entity);
 	
 	DataGrid<Map<String,Object>> search(PageInfo info);
+	
+	AjaxMsg del(String ids);
 }

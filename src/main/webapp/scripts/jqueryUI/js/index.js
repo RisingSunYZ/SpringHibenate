@@ -7,7 +7,8 @@ $(function(){
 					field:'id' ,
 					title:'id' ,
 					width:100 ,
-					align:'center' 
+					align:'center' ,
+					checkbox : true 
 				},
 				{
 					field:'name' ,
@@ -60,9 +61,30 @@ $(function(){
 				});
 			}
 		},'-',{
-			text : '清空' ,
-			iconCls: 'icon-help',
-			handler: function(){alert('帮助按钮')}
+			text : '删除' ,
+			iconCls: 'icon-remove',
+			handler: function(){
+				var rows = grid.datagrid("getChecked");
+				var arr = [];
+				if(rows.length<=0){
+					$.dialog.alert("请至少选择一条明细进行删除");
+					return ;
+				}else{
+					for(var i=0;i<rows.length;i++){
+						arr.push(rows[i].id);
+					}
+					
+					$.dialog.confirm("确认删除这"+rows.length+"条数据吗?",function(){
+						$.post(basePath+'student/del/'+arr.join(",")+'.do',function(data){
+						if(data.success){
+							$.dialog.alert(data.msg);
+				    		refreshGrid();
+				    	}
+					});
+					});
+
+				}
+			}
 		}];
 	
 	grid = $('#datagrid').datagrid({

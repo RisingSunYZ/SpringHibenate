@@ -5,6 +5,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,10 +40,14 @@ public class StudentServiceImpl implements IStudentService{
 	
 	@Override
 	public AjaxMsg save(TStudent entity) {
+		
 		studentDao.saveBySession(entity);
 		
 		Jedis conn = getConn();
     	byte[] stuStr = serializable(entity);
+    	
+    	System.out.println(stuStr);
+    	
     	conn.lpush("students".getBytes(), stuStr);
     	
 		return new AjaxMsg(true,"添加成功");
@@ -62,9 +67,12 @@ public class StudentServiceImpl implements IStudentService{
 		if(StringUtils.isBlank(rows)){
 			rows = "50";
 		}
+		
+		int begin = Integer.parseInt(page)*Integer.parseInt(rows);
+		int end = (Integer.parseInt(page)+1)*Integer.parseInt(rows)-1 ;
 		if(conn.exists("students".getBytes())){
 			long total = conn.llen("students".getBytes());
-			List<byte[]> l = conn.lrange("students".getBytes(), Integer.parseInt(page)*Integer.parseInt(rows),(Integer.parseInt(page)+1)*Integer.parseInt(rows)-1 );
+			List<byte[]> l = conn.lrange("students".getBytes(),begin ,end);
 			List<Map<String, Object>> map = new ArrayList<Map<String,Object>>();
 			for(byte[] student :l){
 				Object obj = unserializable(student);
@@ -80,7 +88,7 @@ public class StudentServiceImpl implements IStudentService{
 			System.out.println("走的缓存");
 			return data;
 		}else{
-			StringBuffer sb = new StringBuffer(" select * from t_student limit "+page+","+rows);
+			StringBuffer sb = new StringBuffer(" select * from t_student limit "+begin+","+end);
 			StringBuffer countSql = new StringBuffer("select count(*) as counts from t_student ");
 			List<Map<String, Object>> map = this.studentDao.searchForMap(sb.toString());
 			long total = this.studentDao.count(countSql.toString());
@@ -92,6 +100,11 @@ public class StudentServiceImpl implements IStudentService{
 	}
 
 
+	/**
+	 * 反序列化
+	 * @param student
+	 * @return
+	 */
 	private Object unserializable(byte[] student) {
 		ObjectInputStream ois = null;
 		ByteArrayInputStream bais = null;
@@ -107,6 +120,11 @@ public class StudentServiceImpl implements IStudentService{
 		return null;
 	}
 	
+	/**
+	 * 序列化
+	 * @param stu
+	 * @return
+	 */
 	private static byte[] serializable(TStudent stu) {
 		ObjectOutputStream oos = null;
 		ByteArrayOutputStream baos = null;
@@ -121,6 +139,42 @@ public class StudentServiceImpl implements IStudentService{
 			e.printStackTrace();
 		}
 		
+		return null;
+	}
+
+
+	@Override
+	public AjaxMsg del(String ids) {
+		try {
+			String [] idArr = ids.split(",");
+			for(String id:idArr){
+				if(StringUtils.isNotBlank(id)){
+					TStudent stu = this.studentDao.find(Integer.parseInt(id), TStudent.class);
+					Jedis conn = getConn();
+					//===============处理日期begin
+					/**
+					 * 因为save的时候日期格式(Wed Apr 25 00:00:00 CST 2018)与search(2018-04-25 00:00:00.0)的时候不一致
+					 * 导致序列化对象结果不相同 所以这里处理一下
+					 */
+					Date date  = stu.getBirth();
+					long dateLong = date.getTime();
+					date = new Date(dateLong);
+					stu.setBirth(date);
+					//===============处理日期end
+					byte [] temp = serializable(stu);
+					long res = conn.lrem("students".getBytes(), 1, temp);
+					if(res == 0){
+						return new AjaxMsg(false, "缓存数据删除失败");
+					}
+				}
+				
+				this.studentDao.deleteById(" delete TStudent where id = ? ",id);	
+			}
+			
+			return new AjaxMsg(true, "删除成功");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 

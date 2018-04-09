@@ -5,5 +5,4 @@ import com.yz.testSH.model.TStudent;
 
 public interface IStudentDao extends IBaseDao<TStudent>{
 
-
 }
