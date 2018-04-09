@@ -24,10 +24,20 @@ import com.yz.testSH.util.AjaxMsg;
 import com.yz.testSH.util.DataGrid;
 import com.yz.testSH.util.PageInfo;
 
+/**
+ * 
+ * @description 学生service层
+ * @author yz
+ * @data 2018年4月9日
+ */
 @Service
 @Transactional
 public class StudentServiceImpl implements IStudentService{
 
+	/**
+	 * 获取redis连接(待优化)
+	 * @return
+	 */
 	private Jedis getConn (){
 		Jedis conn = new Jedis("localhost");
 		return conn;
@@ -38,22 +48,26 @@ public class StudentServiceImpl implements IStudentService{
 	private IStudentDao studentDao;
 	
 	
+	/**
+	 * 保存
+	 */
 	@Override
 	public AjaxMsg save(TStudent entity) {
 		
-		studentDao.saveBySession(entity);
+		studentDao.saveBySession(entity);//存入数据库
 		
 		Jedis conn = getConn();
-    	byte[] stuStr = serializable(entity);
+    	byte[] stuStr = serializable(entity);//将学生信息序列化
     	
-    	System.out.println(stuStr);
-    	
-    	conn.lpush("students".getBytes(), stuStr);
+    	conn.lpush("students".getBytes(), stuStr);//存入缓存
     	
 		return new AjaxMsg(true,"添加成功");
 	}
 
 
+	/**
+	 * 查询学生信息
+	 */
 	@Override
 	public  DataGrid<Map<String,Object>> search(PageInfo info) {
 		Jedis conn = getConn();
@@ -70,7 +84,7 @@ public class StudentServiceImpl implements IStudentService{
 		
 		int begin = Integer.parseInt(page)*Integer.parseInt(rows);
 		int end = (Integer.parseInt(page)+1)*Integer.parseInt(rows)-1 ;
-		if(conn.exists("students".getBytes())){
+		if(conn.exists("students".getBytes())){//如果缓存中存在 则从缓存读数据
 			long total = conn.llen("students".getBytes());
 			List<byte[]> l = conn.lrange("students".getBytes(),begin ,end);
 			List<Map<String, Object>> map = new ArrayList<Map<String,Object>>();
@@ -87,7 +101,7 @@ public class StudentServiceImpl implements IStudentService{
 			DataGrid<Map<String,Object>> data = new DataGrid<Map<String,Object>>(total, map);	
 			System.out.println("走的缓存");
 			return data;
-		}else{
+		}else{//否则从数据库读取数据
 			StringBuffer sb = new StringBuffer(" select * from t_student limit "+begin+","+end);
 			StringBuffer countSql = new StringBuffer("select count(*) as counts from t_student ");
 			List<Map<String, Object>> map = this.studentDao.searchForMap(sb.toString());
@@ -143,6 +157,9 @@ public class StudentServiceImpl implements IStudentService{
 	}
 
 
+	/**
+	 * 删除
+	 */
 	@Override
 	public AjaxMsg del(String ids) {
 		try {

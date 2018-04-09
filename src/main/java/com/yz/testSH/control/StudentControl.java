@@ -17,6 +17,12 @@ import com.yz.testSH.util.AjaxMsg;
 import com.yz.testSH.util.DataGrid;
 import com.yz.testSH.util.PageInfo;
 
+/**
+ * 
+ * @description 学生control
+ * @author yz
+ * @data 2018年4月9日
+ */
 @Controller
 @Scope("prototype")
 @RequestMapping("/student")
@@ -62,6 +68,12 @@ public class StudentControl {
 		return res;
 	}
 	
+	/**
+	 * 删除学生
+	 * @param ids
+	 * @return
+	 * @throws Exception
+	 */
 	@ResponseBody
 	@RequestMapping("del/{ids}.do")
 	public String del(@PathVariable("ids")String ids) throws Exception{

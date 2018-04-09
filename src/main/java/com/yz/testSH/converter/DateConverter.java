@@ -5,6 +5,12 @@ import java.util.Date;
 
 import org.springframework.core.convert.converter.Converter;
 
+/**
+ * 
+ * @description 日期转换
+ * @author yz
+ * @data 2018年4月9日
+ */
 public class DateConverter implements Converter<String, Date>{
 
 	@Override
