@@ -195,5 +195,14 @@ public class StudentServiceImpl implements IStudentService{
 		return null;
 	}
 
+
+	@Override
+	public TStudent findStudent(String id) throws Exception {
+		if(StringUtils.isBlank(id)){
+			throw new Exception("获取学生信息出错");
+		}
+		return this.studentDao.find(Integer.parseInt(id),TStudent.class);
+	}
+
 	
 }

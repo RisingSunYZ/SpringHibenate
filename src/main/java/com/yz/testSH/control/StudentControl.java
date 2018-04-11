@@ -84,4 +84,30 @@ public class StudentControl {
 		String res = JSON.toJSONString(msg);
 		return res;
 	}
+	
+	
+	/**
+	 * 跳转到修改页面
+	 * @return
+	 */
+	@RequestMapping("/fdEdit.do")
+	public String fdEdit(){
+		return basePath+"edit";
+	}
+	
+	@ResponseBody
+	@RequestMapping("getStudent/{id}/.do")
+	public String getStudent(@PathVariable("id")String id){
+		TStudent stu = new TStudent();
+		try {
+			if(StringUtils.isBlank(id)){
+				return JSON.toJSONString(new AjaxMsg(false, "获取学生信息出错"));
+			}
+			stu = this.studentService.findStudent(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return JSON.toJSONString(new AjaxMsg(false, "获取学生信息出错"));
+		}
+		return JSON.toJSONString(stu);
+	}
 }

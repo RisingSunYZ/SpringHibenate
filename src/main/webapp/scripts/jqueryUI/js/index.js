@@ -33,7 +33,7 @@ $(function(){
 			text : '添加' ,
 			iconCls: 'icon-add',
 			handler: function(){
-				var dilog = $.dialog({
+				var dialog = $.dialog({
 					id : 'dialog',
 					title : '添加学生',
 					content : 'url:'+basePath+'student/fdAdd.do',
@@ -47,14 +47,14 @@ $(function(){
 					min : false,
 					cache : false,
 					ok : function() {
-						var temp = dilog.content.save();
+						var temp = dialog.content.save();
 						$.post(basePath +'student/add.do',{"name":temp.name,"birth":temp.birth},function(data){
 //							data = eval("("+data+")");
 							if(data.success){
 								$.dialog.alert(data.msg);
 					    		refreshGrid();
 					    	}
-						})
+						});
 					},
 					cancelVal : '关闭',
 					cancel : true
@@ -83,6 +83,37 @@ $(function(){
 					});
 					});
 
+				}
+			}
+		},'-',{
+			text : '修改' ,
+			iconCls: 'icon-edit',
+			handler: function(){
+				var rows = grid.datagrid("getChecked");
+				if(rows.length!=1){
+					$.dialog.alert("请选择一条明细进行修改");
+					return ;
+				}else{
+					var dialog = $.dialog({
+						id : 'dialog',
+						title : '修改学生',
+						content : 'url:'+basePath+'student/fdEdit.do',
+						height : "500px",
+						width : "1070px",
+						top : '60%',
+						fixed : false,
+						lock : false,
+						parent : this,
+						max : false,
+						min : false,
+						cache : false,
+						data : {"row":rows[0]} ,
+						ok : function() {
+							dialog.content.edit();
+						},
+						cancelVal : '关闭',
+						cancel : true
+					});
 				}
 			}
 		}];

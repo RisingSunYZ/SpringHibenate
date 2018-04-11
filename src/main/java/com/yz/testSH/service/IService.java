@@ -13,4 +13,6 @@ public interface IService<T> {
 	DataGrid<Map<String,Object>> search(PageInfo info);
 	
 	AjaxMsg del(String ids);
+	
+	T findStudent(String id) throws Exception ;
 }
